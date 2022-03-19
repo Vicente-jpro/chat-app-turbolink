@@ -7,8 +7,8 @@ class MessagesController < ApplicationController
 
     def create 
       @room = Room.find(params[:room_id])
-      @message = @room.messages.create!(message_params)
-     
+      @message = @room.messages.new(message_params)
+      @message.save
 
       respond_to do |format|
           format.html { redirect_to @room }
